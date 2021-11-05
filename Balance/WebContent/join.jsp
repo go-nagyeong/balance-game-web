@@ -37,8 +37,8 @@
 			return false;
 		}
 
-		if (document.newMember.idDuplication.value != "idCheck") {
-			alert("아이디 중복검사를 하세요");
+		if (document.newMember.idDuplication.value != "usable") {
+			alert("아이디 중복검사를 하세요.");
 			return false;
 		}
 	}
