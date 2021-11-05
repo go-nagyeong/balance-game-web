@@ -37,30 +37,3 @@
 		window.close();
 	</script>
 </c:if>
-
-<%-- <html>
-<head>
-<title>아이디 중복검사</title>
-</head>
-<body>
-	<br>
-	<div>
-		<h5 align="center">
-			<c:if test="${result == 0}">
-				아이디를 사용할 수 있습니다
-				<script>
-					opener.document.newMember.idDuplication.value = "idCheck";
-				</script>
-			</c:if>
-
-			<c:if test="${result == 1}">
-				이미 사용 중인 아이디입니다 
-			</c:if>
-		</h5>
-	</div>
-
-	<div align="center">
-		<input type="button" onclick="window.close()" value=" 닫기 ">
-	</div>
-</body>
-</html> --%>
