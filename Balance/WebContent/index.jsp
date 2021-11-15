@@ -110,15 +110,15 @@
 				<div class="container">
 					<div class="row mb-5">
 						<div class="col-lg-5">
-							<div class="ftco-footer-widget mb-4">
+							<div class="ftco-footer-widget mb-4 ml-md-5">
 								<h2 class="ftco-heading-2 logo"><a href="index.html">Erase</a></h2>
 								<p>Far far away, behind the word mountains, far from the countries Vokalia and
 									Consonantia, there live the blind texts.</p>
 							</div>
 						</div>
 						
-						<div class="col-lg-2">
-							<div class="ftco-footer-widget mb-4 ml-md-4">
+						<div class="col-lg-3">
+							<div class="ftco-footer-widget mb-4 ml-md-5">
 								<h2 class="ftco-heading-2">Site Links</h2>
 								<ul class="list-unstyled">
 									<li><a href="#" class="py-2 d-block">Home</a></li>
@@ -132,14 +132,61 @@
 							<div class="ftco-footer-widget mb-4">
 								<h2 class="ftco-heading-2">This is made by</h2>
 								<div class="block-21 mb-4 d-flex">
-									<a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+									<a href="https://github.com/BeomSu-Lim" class="mr-3 mt-0-1">
+										<span class="icon-github"></span>
+									</a>
 									<div class="text">
-										<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control
-												about</a></h3>
+										<a href="https://github.com/BeomSu-Lim">
+											<span style="color: white; font-size: 15px">BeomSu-Lim</span>
+										</a>
 										<div class="meta">
-											<div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-											<div><a href="#"><span class="icon-person"></span> 임범수</a></div>
-											<div><a href="#"><span class="icon-chat"></span> 19</a></div>
+											<div><a><span class="icon-person"></span> 임범수</a></div>
+											<div><a><span class="icon-google"></span> @gmail.com</a></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="block-21 mb-4 d-flex">
+									<a href="https://github.com/ropering" class="mr-3 mt-0-1">
+										<span class="icon-github"></span>
+									</a>
+									<div class="text">
+										<a href="https://github.com/ropering">
+											<span style="color: white; font-size: 15px">ropering</span>
+										</a>
+										<div class="meta">
+											<div><a><span class="icon-person"></span> 오명균</a></div>
+											<div><a><span class="icon-google"></span> bonoboss1028@gmail.com</a></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="block-21 mb-4 d-flex">
+									<a href="https://github.com/go-nagyeong" class="mr-3 mt-0-1">
+										<span class="icon-github"></span>
+									</a>
+									<div class="text">
+										<a href="https://github.com/go-nagyeong">
+											<span style="color: white; font-size: 15px">go-nagyeong</span>
+										</a>
+										<div class="meta">
+											<div><a><span class="icon-person"></span> 김나경</a></div>
+											<div><a><span class="icon-google"></span> ngkim.dev@gmail.com</a></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="block-21 mb-4 d-flex">
+									<a href="https://github.com/wjs1324" class="mr-3 mt-0-1">
+										<span class="icon-github"></span>
+									</a>
+									<div class="text">
+										<a href="https://github.com/wjs1324">
+											<span style="color: white; font-size: 15px">wjs1324</span>
+										</a>
+										<div class="meta">
+											<div><a><span class="icon-person"></span> 전우민</a></div>
+											<div><a><span class="icon-google"></span> sportsstatistics1997@gmail.com</a></div>
 										</div>
 									</div>
 								</div>
