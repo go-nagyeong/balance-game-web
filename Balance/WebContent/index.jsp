@@ -12,14 +12,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
 
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<link rel="stylesheet" href="css/aos.css">
+
+<link rel="stylesheet" href="css/ionicons.min.css">
+
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -44,22 +55,19 @@
 									<li>
 										<a href="#" style="font-size: 16px"><%=session.getAttribute("id")%>님 안녕하세요.</a>
 									</li>
-									<li class="active">
-										<a href="updateMember.jsp"><span>Modify</span></a>
-									</li>
+									<li class="active"><a href="index.jsp"><span>Home</span></a></li>
+									<li> <a href="updateMember.jsp"><span>Modify</span></a> </li>
 									<li> <a href="logout.jsp"><span>LogOut</span></a> </li>
-									<li> <a href="game.jsp"><span>Game Start</span></a> </li>
 									<li> <a href="voteResult.jsp"><span>Record</span></a> </li>
 
 								<!-- 비 로그인 상태 -->
 								<%
 								} else {
 								%>
-									<li class="active">
-										<a href="login.jsp"><span>LogIn</span></a>
-									</li>
-									<li> <a href="voteResult.jsp"><span>Record</span></a> </li>
+									<li class="active"><a href="index.jsp"><span>Home</span></a></li>
+									<li> <a href="login.jsp"><span>LogIn</span></a> </li>
 									<li> <a href="join.jsp"><span>Join</span></a> </li>
+									<li> <a href="voteResult.jsp"><span>Record</span></a> </li>
 								<%
 								} %>
 							</ul>
