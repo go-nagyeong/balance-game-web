@@ -137,11 +137,11 @@
 									</a>
 									<div class="text">
 										<a href="https://github.com/BeomSu-Lim">
-											<span style="color: white; font-size: 15px">BeomSu-Lim</span>
+											<span>BeomSu-Lim</span>
 										</a>
 										<div class="meta">
 											<div><a><span class="icon-person"></span> 임범수</a></div>
-											<div><a><span class="icon-google"></span> @gmail.com</a></div>
+											<div><a><span class="icon-google"></span> </a></div>
 										</div>
 									</div>
 								</div>
@@ -152,7 +152,7 @@
 									</a>
 									<div class="text">
 										<a href="https://github.com/ropering">
-											<span style="color: white; font-size: 15px">ropering</span>
+											<span>ropering</span>
 										</a>
 										<div class="meta">
 											<div><a><span class="icon-person"></span> 오명균</a></div>
@@ -167,7 +167,7 @@
 									</a>
 									<div class="text">
 										<a href="https://github.com/go-nagyeong">
-											<span style="color: white; font-size: 15px">go-nagyeong</span>
+											<span>go-nagyeong</span>
 										</a>
 										<div class="meta">
 											<div><a><span class="icon-person"></span> 김나경</a></div>
@@ -182,7 +182,7 @@
 									</a>
 									<div class="text">
 										<a href="https://github.com/wjs1324">
-											<span style="color: white; font-size: 15px">wjs1324</span>
+											<span>wjs1324</span>
 										</a>
 										<div class="meta">
 											<div><a><span class="icon-person"></span> 전우민</a></div>
