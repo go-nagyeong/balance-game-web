@@ -8561,6 +8561,11 @@ header {
 .slider-text .desc {
   display: inline-block;
   position: relative; }
+  
+.slider-text .game-btn {
+  text-align: center;
+  line-height: 60px;
+  margin-top: 40px; }
 
 .slider-text h1 {
   font-size: 340px;
