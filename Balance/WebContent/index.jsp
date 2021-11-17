@@ -92,13 +92,10 @@
 								<span class="subheading-2">인공지능 개발자 양성과정</span>
 							</div>
 							
-							<div>
-								<%
-								if (session.getAttribute("id") != null) {
-								%>
-									<a class="btn-primary btn-xl" href="game.jsp" style="text-align: center">Start</a>
-								<%
-								} %>
+							<div class="game-btn">
+								<% if (session.getAttribute("id") != null) { %>
+									<a class="btn-primary btn-xl" href="game.jsp">Start</a>
+								<% } %>
 							</div>
 						</div>
 					</div>
@@ -111,9 +108,10 @@
 					<div class="row mb-5">
 						<div class="col-lg-5">
 							<div class="ftco-footer-widget mb-4 ml-md-5">
-								<h2 class="ftco-heading-2 logo"><a href="index.html">Erase</a></h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and
-									Consonantia, there live the blind texts.</p>
+								<h2 class="ftco-heading-2 logo"><a href="index.html">Balance Game</a></h2>
+								<p>밸런스 게임이라는 단일 서비스를 제공하는 웹 사이트입니다. 
+								회원가입을 하셔야 이용하실 수 있고, 다른 이용자들의 밸런스 질문 선택 비울을
+								Record 페이지에서 확인할 수 있습니다.</p>
 							</div>
 						</div>
 						
@@ -123,7 +121,9 @@
 								<ul class="list-unstyled">
 									<li><a href="#" class="py-2 d-block">Home</a></li>
 									<li><a href="voteResult.jsp" class="py-2 d-block">Record</a></li>
+									<% if (session.getAttribute("id") != null) { %>
 									<li><a href="game.jsp" class="py-2 d-block">Game</a></li>
+									<% } %>
 								</ul>
 							</div>
 						</div>
