@@ -63,7 +63,7 @@
 					</div>
 
 					<div class="text-center w-full p-t-23">
-						<a onclick="goCheckDelete()" class="txt1" style="cursor: pointer">회원 탈퇴</a>
+						<a href="javascript:void(0)" onclick="goCheckDelete()" class="txt1">회원 탈퇴</a>
 					</div>
 				</form>
 				
