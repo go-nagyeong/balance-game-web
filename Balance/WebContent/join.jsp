@@ -87,7 +87,7 @@
 				<form name="newMember" action="processJoin.jsp" method="post" onsubmit="return checkForm()" class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">회원가입</span>
 
-					<div class="wrap-input100 rs1 wrap-input100 rs2 validate-input" data-validate="Username is required">
+					<div class="wrap-input100 rs3 validate-input" data-validate="Username is required">
 						<input class="input100" type="text" name="myid" onchange="checkId()">
 						<span class="label-input100">아이디</span>
 						<input type="hidden" name="idCheckBox" value="checkable">
