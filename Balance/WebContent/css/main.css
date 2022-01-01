@@ -6,13 +6,13 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+  font-family: NanumGothic-Regular;
+  src: url('../fonts/nanum-gothic/NanumGothic-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: OpenSans-Bold;
-  src: url('../fonts/OpenSans/OpenSans-Bold.ttf'); 
+  font-family: NanumGothic-Bold;
+  src: url('../fonts/nanum-gothic/NanumGothic-Bold.ttf') format('truetype');
 }
 
 
@@ -29,12 +29,14 @@
 
 body, html {
 	height: 100%;
-	font-family: OpenSans-Regular, sans-serif;
+	/* font-family: OpenSans-Regular, sans-serif; */
+	font-family: NanumGothic-Regular;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: OpenSans-Regular;
+	/* font-family: OpenSans-Regular; */
+	font-family: NanumGothic-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -52,15 +54,16 @@ a:focus {
 a:hover {
 	text-decoration: none;
   color: #fff;
-}login100-form-btn
+}
 
-/*---------------------------------------------*/
+
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
 }
 
 p {
-	font-family: OpenSans-Regular;
+	/* font-family: OpenSans-Regular; */
+	font-family: NanumGothic-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -199,7 +202,8 @@ table {
 .login100-form-title {
   width: 100%;
   display: block;
-  font-family: OpenSans-Regular;
+  /* font-family: OpenSans-Regular; */
+  font-family: NanumGothic-Regular;
   font-size: 30px;
   color: #fefefe;
   line-height: 1.2;
@@ -319,7 +323,8 @@ input.input100 {
 }
 
 .login100-form-btn {
-  font-family: OpenSans-Bold;
+  /* font-family: OpenSans-Bold; */
+  font-family: NanumGothic-Regular;
   font-size: 15px;
   color: #fff;
   line-height: 1.2;
@@ -512,9 +517,27 @@ input.input100 {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05); }
 
-.table-hover tbody tr:hover {
-  color: #212529;
-  background-color: rgba(0, 0, 0, 0.075); }
+
+.table-hover td img {
+  position: relative; }
+.table-hover td p {
+  color: white;
+  font-size: 24px;
+  font-family: NanumGothic-Regular;
+  font-weight: 600;
+  position: absolute;
+  top: 42%;
+  opacity: 0; }
+.table-hover td:nth-of-type(1) p {
+  left: 20%; }
+.table-hover td:nth-of-type(2) p {
+  left: 55%; }
+  
+.table-hover td:hover img{
+  filter: brightness(40%); }
+.table-hover td:hover p {
+  opacity: 1; }
+  
 
 .table-primary,
 .table-primary > th,

@@ -5,11 +5,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Game</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
-<body style="background-color: #F1B208">
+<body>
 	<%
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -24,119 +31,116 @@
 		rs1.next();
 	%>
 	
-		<br>
-		<div align="center">
-			<h2> <%=rs1.getInt("gamecount") + 1%>번째 밸런스 </h2>
-		</div>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-record p-b-160 p-t-50">
+				<span class="login100-form-title m-b-35">
+					<%=rs1.getInt("gamecount") + 1%>번째 밸런스
+				</span>
 	
-		<script>
-			function Check1() {
-				document.formName.hidden1.value = "1";
-			}
-			function Check2() {
-				document.formName.hidden2.value = "1";
-			}
-		</script>
+				<script>
+					function Check1() {
+						document.formName.hidden1.value = "1";
+					}
+					function Check2() {
+						document.formName.hidden2.value = "1";
+					}
+				</script>
 	
-		<%
-		if (rs1.getInt("gamecount") == 0) {
-		%>
-			<form name="formName" action="voteaction.jsp" style="font-size: 20px;">
-				<input type="hidden" name="gamecount" value=<%=rs1.getInt("gamecount")%> >
-				<input type="hidden" name="hidden1" value="0">
-				<input type="hidden" name="hidden2" value="0">
-				<input type="hidden" name="op1" value="1">
-				<input type="hidden" name="op2" value="2">
-		
-				<table align="center">
-					<tr>
-						<td><button type="submit" onclick="Check1()">
-								<img src=q_images/1.jpg width="400" height="400">
-							</button></td>
-		
-						<td><button type="submit" onclick="Check2()">
-								<img src=q_images/2.jpg width="400" height="400">
-							</button></td>
-					</tr>
-		
-					<tr>
-						<td align="center">
-							<%
-							sql = "select * from question where num=1";
-							pstmt = conn.prepareStatement(sql);
-							rs2 = pstmt.executeQuery();
-							rs2.next();
-							%>
-							<%=rs2.getString("opt")%>
-						</td>
-						<td align="center">
-							<%
-							sql = "select * from question where num=2";
-							pstmt = conn.prepareStatement(sql);
-							rs2 = pstmt.executeQuery();
-							rs2.next();
-							%>
-							<%=rs2.getString("opt")%>
-						</td>
-					</tr>
-				</table>
-		
-			</form>
+				<%
+				if (rs1.getInt("gamecount") == 0) {
+				%>
+				<form name="formName" action="voteAction.jsp">
+					<input type="hidden" name="gamecount" value=<%=rs1.getInt("gamecount")%> >
+					<input type="hidden" name="hidden1" value="0">
+					<input type="hidden" name="hidden2" value="0">
+					<input type="hidden" name="op1" value="1">
+					<input type="hidden" name="op2" value="2">
 			
-		<%
-		} else if (rs1.getInt("gamecount") < 20) {
-		%>
-			<form name="formName" action="voteaction.jsp" style="font-size: 20px;">
-				<input type="hidden" name="gamecount" value=<%=rs1.getInt("gamecount")%> >
-				<input type="hidden" name="hidden1" value="0">
-				<input type="hidden" name="hidden2" value="0">
-				<input type="hidden" name="op1" value=<%=rs1.getInt("gamecount") * 2 + 1%> >
-				<input type="hidden" name="op2" value=<%=rs1.getInt("gamecount") * 2 + 2%> >
-		
-				<table align="center">
-					<tr>
-						<td><button type="submit" onclick="Check1()">
-								<img src=q_images/<%=rs1.getInt("gamecount") * 2 + 1%>.jpg width="400" height="400">
-							</button></td>
-		
-						<td><button type="submit" onclick="Check2()">
-								<img src=q_images/<%=rs1.getInt("gamecount") * 2 + 2%>.jpg width="400" height="400">
-							</button></td>
-					</tr>
-		
-					<tr>
-						<td align="center">
-							<%
-							sql = "select * from question where num=?";
-							pstmt = conn.prepareStatement(sql);
-							int a = rs1.getInt("gamecount") * 2 + 1;
-							pstmt.setInt(1, a);
-							rs2 = pstmt.executeQuery();
-							rs2.next();
-							%>
-							<%=rs2.getString("opt")%>
-						</td>
-						<td align="center">
-							<%
-							sql = "select * from question where num=?";
-							pstmt = conn.prepareStatement(sql);
-							int b = rs1.getInt("gamecount") * 2 + 2;
-							pstmt.setInt(1, b);
-							rs2 = pstmt.executeQuery();
-							rs2.next();
-							%>
-							<%=rs2.getString("opt")%>
-						</td>
-					</tr>
-				</table>
-		
-			</form>
+					<table class="table table-borderless table-hover">
+						<tr>
+							<td>
+								<button type="submit" onclick="Check1()">
+									<img src=q_images/1.jpg width="400" height="400">
+									<%
+									sql = "select * from question where num=1";
+									pstmt = conn.prepareStatement(sql);
+									rs2 = pstmt.executeQuery();
+									rs2.next();
+									%>
+									<p><%=rs2.getString("opt")%></p>
+								</button>
+							</td>
+							<td>
+								<button type="submit" onclick="Check2()">
+									<img src=q_images/2.jpg width="400" height="400">
+									<%
+									sql = "select * from question where num=2";
+									pstmt = conn.prepareStatement(sql);
+									rs2 = pstmt.executeQuery();
+									rs2.next();
+									%>
+									<p><%=rs2.getString("opt")%></p>
+								</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+					
+				<%
+				} else if (rs1.getInt("gamecount") < 20) {
+				%>
+				<form name="formName" action="voteAction.jsp">
+					<input type="hidden" name="gamecount" value=<%=rs1.getInt("gamecount")%> >
+					<input type="hidden" name="hidden1" value="0">
+					<input type="hidden" name="hidden2" value="0">
+					<input type="hidden" name="op1" value=<%=rs1.getInt("gamecount") * 2 + 1%> >
+					<input type="hidden" name="op2" value=<%=rs1.getInt("gamecount") * 2 + 2%> >
+			
+					<table class="table table-borderless table-hover text-white">
+						<tr>
+							<td>
+								<button type="submit" onclick="Check1()">
+									<img src=q_images/<%=rs1.getInt("gamecount") * 2 + 1%>.jpg width="400" height="400">
+									<%
+									sql = "select * from question where num=?";
+									pstmt = conn.prepareStatement(sql);
+									int a = rs1.getInt("gamecount") * 2 + 1;
+									pstmt.setInt(1, a);
+									rs2 = pstmt.executeQuery();
+									rs2.next();
+									%>
+									<p><%=rs2.getString("opt")%></p>
+								</button>
+							</td>
+							<td>
+								<button type="submit" onclick="Check2()">
+									<img src=q_images/<%=rs1.getInt("gamecount") * 2 + 2%>.jpg width="400" height="400">
+									<%
+									sql = "select * from question where num=?";
+									pstmt = conn.prepareStatement(sql);
+									int b = rs1.getInt("gamecount") * 2 + 2;
+									pstmt.setInt(1, b);
+									rs2 = pstmt.executeQuery();
+									rs2.next();
+									%>
+									<p><%=rs2.getString("opt")%></p>
+								</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			
+				<%
+				} else {
+					response.sendRedirect("voteResult.jsp");
+				}
+				%>
+			</div>
+		</div>
+	</div>
 	
-		<%
-		} else {
-			response.sendRedirect("voteResult.jsp");
-		}
-
+	<%
 	} catch (Exception e) {
 		out.println(e);
 	}
