@@ -110,7 +110,7 @@
 							<div class="ftco-footer-widget mb-4 ml-md-5">
 								<h2 class="ftco-heading-2 logo"><a href="index.html">Balance Game</a></h2>
 								<p>밸런스 게임이라는 단일 서비스를 제공하는 웹 사이트입니다. 
-								회원가입을 하셔야 이용하실 수 있고, 다른 이용자들의 밸런스 질문 선택 비울을
+								회원가입을 하셔야 이용하실 수 있고, 다른 이용자들의 밸런스 질문 선택 비율을
 								Record 페이지에서 확인할 수 있습니다.</p>
 							</div>
 						</div>
