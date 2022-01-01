@@ -3,7 +3,6 @@ use balancedb;
 select * from member;
 select * from question;
 
-
 -- 회원정보 저장할 member 테이블
 create table member (
 id varchar(20),
@@ -84,9 +83,3 @@ insert into question values(37,'로또에 당첨된다면, 연인한테 말한�
 insert into question values(38,'연인한테 말하지 않는다',0,0);
 insert into question values(39,'단톡방에서 고백 받기',0,0);
 insert into question values(40,'길거리에서 고백 받기',0,0);
-
-
--- 해당 선택지를 선택한 사람의 비율을 계산하는 필드
-ALTER TABLE question ADD per int as ((yes/total)*100);
-
-select * from question;

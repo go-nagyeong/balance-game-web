@@ -42,11 +42,13 @@
 							Class.forName("com.mysql.jdbc.Driver");
 							conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/balancedb", "root", "1234");
 							stmt = conn.createStatement();
-							ResultSet rs = stmt.executeQuery("select num, opt, total, yes, per from question order by num asc");
+							ResultSet rs = stmt.executeQuery("select num, opt, total, yes from question order by num asc");
 			
 							while (rs.next()) {
-								int per = rs.getInt("per");
-			
+								float yes = rs.getInt("yes");
+								float total = rs.getInt("total");
+								String per = String.format("%.0f", (yes/total)*100);
+								
 								if (rs.getInt("num") % 2 == 1) {
 					%>
 									<tr>
@@ -54,11 +56,15 @@
 										<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
 										<td> <%=rs.getString("opt")%> </td>
 										<td>
-											<%=rs.getInt("per")%>%
-											<c:set var="per" value="<%=per%>" />
-											<c:if test="${per==Null}">
-												<c:out value="0%" />
-											</c:if>
+											<c:set var="total" value="<%=total%>" />
+											<c:choose>
+												<c:when test="${total eq 0}">
+											        <c:out value="0%" />
+											    </c:when>
+												<c:otherwise>
+													<c:out value="<%=per%>" />%
+											    </c:otherwise>
+										    </c:choose>
 											<br>
 											(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
 										</td>
@@ -68,11 +74,15 @@
 										<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
 										<td> <%=rs.getString("opt")%> </td>
 										<td>
-											<%=rs.getInt("per")%>%
-											<c:set var="per" value="<%=per%>" />
-											<c:if test="${per==Null}">
-												<c:out value="0%" />
-											</c:if>
+											<c:set var="total" value="<%=total%>" />
+											<c:choose>
+												<c:when test="${total eq 0}">
+											        <c:out value="0%" />
+											    </c:when>
+												<c:otherwise>
+													<c:out value="<%=per%>" />%
+											    </c:otherwise>
+										    </c:choose>
 											<br>
 											(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
 										</td>
@@ -81,7 +91,7 @@
 								}
 							}
 						} catch(Exception e) {
-							
+							out.println(e);
 						}
 					%>
 					
