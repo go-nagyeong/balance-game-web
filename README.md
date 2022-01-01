@@ -1,4 +1,4 @@
-# :game_die:Balance Game Website:game_die:
+# 🎲 Balance Game Website 🎲
 회원제의 밸런스 게임 사이트  
 &nbsp;
 
@@ -10,12 +10,9 @@
 &nbsp;
 
 ## Environment
+Mac os Monterey 12.0.1  
 Java SE 8 (1.8.0)  
 Apache Tomcat v9.0  
 Eclipse 4.16 (2020-06)  
 MySQL 8.0.22  
 JSP, HTML, CSS, Java Script  
-&nbsp;
-
-## 
-
