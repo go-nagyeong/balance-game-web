@@ -22,7 +22,11 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-record p-b-160 p-t-50">
-				<span class="login100-form-title">밸런스 게임</span>
+				<span class="login100-form-title m-b-35">밸런스 게임</span>
+				<div class="text-center w-full m-b-20">
+					<a href="game.jsp" class="txt1 m-r-35">게임 시작</a>
+					<a href="index.jsp" class="txt1">메인 화면</a>
+				</div>
 			
 				<table class="table table-light">
 					<tr>
@@ -94,12 +98,6 @@
 							out.println(e);
 						}
 					%>
-					
-					<div class="text-center w-full p-t-23 p-b-10">
-						<a href="game.jsp" class="txt1 m-r-20">게임 시작</a>
-						&nbsp;
-						<a href="index.jsp" class="txt1">메인 화면</a>
-					</div>
 				</table>
 			
 				<!-- index.jsp에 접속하면 로그인한 아이디의 DB에 있는 gamecount값이 초기화됨 -->
