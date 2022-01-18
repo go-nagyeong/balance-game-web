@@ -25,6 +25,7 @@
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/balancedb", "root", "1234");
+		
 		String sql = "select * from member where id='" + session.getAttribute("id") + "'";
 		pstmt = conn.prepareStatement(sql);
 		rs1 = pstmt.executeQuery();
@@ -37,6 +38,10 @@
 				<span class="login100-form-title m-b-35">
 					<%=rs1.getInt("gamecount") + 1%>번째 밸런스
 				</span>
+				<div class="text-center w-full m-b-20">
+					<a href="resetGame.jsp" class="txt1 m-r-35">재시작</a>
+					<a href="index.jsp" class="txt1">메인 화면</a>
+				</div>
 	
 				<script>
 					function Check1() {
