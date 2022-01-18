@@ -19,6 +19,9 @@
 </head>
 
 <body>
+	<% boolean isAfterGame = Boolean.parseBoolean(request.getParameter("isAfterGame")); %>
+	<c:set var='isAfterGame' value='<%=isAfterGame%>'/>
+	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-record p-b-160 p-t-50">
@@ -45,54 +48,89 @@
 						try {
 							Class.forName("com.mysql.jdbc.Driver");
 							conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/balancedb", "root", "1234");
+							
 							stmt = conn.createStatement();
 							ResultSet rs = stmt.executeQuery("select num, opt, total, yes from question order by num asc");
-			
+							
+							stmt = conn.createStatement();
+							ResultSet rs2 = stmt.executeQuery("select * from member where id='" + session.getAttribute("id") + "'");
+							rs2.next();
+							
+							int gNum = 0;
+							
 							while (rs.next()) {
 								float yes = rs.getInt("yes");
 								float total = rs.getInt("total");
 								String per = String.format("%.0f", (yes/total)*100);
 								
-								if (rs.getInt("num") % 2 == 1) {
-					%>
-									<tr>
-										<td> <%=rs.getInt("num") / 2 + 1%> </td>
-										<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
-										<td> <%=rs.getString("opt")%> </td>
-										<td>
-											<c:set var="total" value="<%=total%>" />
-											<c:choose>
-												<c:when test="${total eq 0}">
-											        <c:out value="0%" />
-											    </c:when>
-												<c:otherwise>
-													<c:out value="<%=per%>" />%
-											    </c:otherwise>
-										    </c:choose>
-											<br>
-											(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
-										</td>
+								String field = "g";
+					%>	
+								<c:set var='option' value='<%=rs.getInt("num")%>'/>
+								
+								<c:choose>
+									<c:when test="${option % 2 == 1}">
+										<% gNum += 1; field += gNum; %>
+										<c:set var='selectedOption' value="<%=rs2.getInt(field)%>"/>
 										
-							<%  } else if(rs.getInt("num") % 2 == 0) { %>
+										<tr>
+											<td> <%=rs.getInt("num") / 2 + 1%> </td>
+											<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
+											<td>
+												<span style="
+													<c:if test="${isAfterGame && selectedOption==option}">
+														background: linear-gradient(to top, yellow 50%, transparent 50%);
+														font-size: 18px;
+													</c:if>
+													">
+												<%=rs.getString("opt")%></span>
+											</td>
+											<td>
+												<c:set var="total" value="<%=total%>" />
+												<c:choose>
+													<c:when test="${total eq 0}">
+												        <c:out value="0%" />
+												    </c:when>
+													<c:otherwise>
+														<c:out value="<%=per%>" />%
+												    </c:otherwise>
+											    </c:choose>
+												<br>
+												(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
+											</td>
+									</c:when>
+									<c:otherwise>
+											<% field += gNum; %>
+											<c:set var='selectedOption' value="<%=rs2.getInt(field)%>"/>
+											
+											<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
+											<td>
+												<span style="
+													<c:if test="${isAfterGame && selectedOption==option}">
+														background: linear-gradient(to top, yellow 50%, transparent 50%);
+														font-size: 18px;
+													</c:if>
+													">
+												<%=rs.getString("opt")%></span>
+											</td>
+											<td>
+												<c:set var="total" value="<%=total%>" />
+												<c:choose>
+													<c:when test="${total eq 0}">
+												        <c:out value="0%" />
+												    </c:when>
+													<c:otherwise>
+														<c:out value="<%=per%>" />%
+												    </c:otherwise>
+											    </c:choose>
+												<br>
+												(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
+											</td>
+										</tr>
+									</c:otherwise>
 										
-										<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
-										<td> <%=rs.getString("opt")%> </td>
-										<td>
-											<c:set var="total" value="<%=total%>" />
-											<c:choose>
-												<c:when test="${total eq 0}">
-											        <c:out value="0%" />
-											    </c:when>
-												<c:otherwise>
-													<c:out value="<%=per%>" />%
-											    </c:otherwise>
-										    </c:choose>
-											<br>
-											(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
-										</td>
-									</tr>
+								</c:choose>
 					<%
-								}
+								/* } */
 							}
 						} catch(Exception e) {
 							out.println(e);

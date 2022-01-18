@@ -138,7 +138,7 @@
 			
 				<%
 				} else {
-					response.sendRedirect("voteResult.jsp");
+					response.sendRedirect("voteResult.jsp?isAfterGame=true");
 				}
 				%>
 			</div>
