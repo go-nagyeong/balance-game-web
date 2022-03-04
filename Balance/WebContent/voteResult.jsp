@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>게임 기록</title>
+<title>Game Record</title>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,13 +19,25 @@
 </head>
 
 <body>
-	<% boolean isAfterGame = Boolean.parseBoolean(request.getParameter("isAfterGame")); %>
-	<c:set var='isAfterGame' value='<%=isAfterGame%>'/>
+<sql:setDataSource var="dataSource"
+	url="jdbc:mysql://localhost:3306/balancedb"
+	driver="com.mysql.jdbc.Driver" user="root" password="1234" />
+
+<!-- 게임이 끝난 이후의 접근이면 gamecount 초기화 -->
+<c:set var='isAfterGame' value='<%=request.getParameter("isAfterGame")%>'/>
+<c:if test="${isAfterGame}">
+	<sql:update dataSource="${dataSource}" var="resultSet">
+		UPDATE member SET gamecount=0 WHERE id=?
+		<sql:param value="<%=session.getAttribute(\"id\")%>" />
+	</sql:update>
+</c:if>
+	
 	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-record p-b-160 p-t-50">
 				<span class="login100-form-title m-b-35">밸런스 게임</span>
+				
 				<div class="text-center w-full m-b-20">
 					<a href="game.jsp" class="txt1 m-r-35">게임 시작</a>
 					<a href="index.jsp" class="txt1">메인 화면</a>
@@ -39,122 +51,73 @@
 						<td colspan="2">선택 B</td>
 						<td>전적</td>
 					</tr>
-			
 
-					<%
-						Connection conn = null;
-						Statement stmt = null;
-			
-						try {
-							Class.forName("com.mysql.jdbc.Driver");
-							conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/balancedb", "root", "1234");
+					<!-- 게임 카운트 변수 -->
+					<c:set var="gameCount" value="1" />
+
+					<sql:query dataSource="${dataSource}" var="resultSet">
+					   SELECT * FROM question
+					</sql:query>
+					
+					<c:forEach var="row" items="${resultSet.rows}">
+						<!-- 밸런스 선택 비율 변수 -->
+						<fmt:formatNumber var="per" pattern="0" value="${row.yes / row.total * 100}" />
+						
+						<!-- 사용자의 게임 기록을 위해 사용자가 선택한 밸런스를 기록해놓은 필드 가져오기 -->
+						<sql:query dataSource="${dataSource}" var="resultSet2">
+						   SELECT * FROM member WHERE id=?
+						   <sql:param value="<%=session.getAttribute(\"id\")%>" />
+						</sql:query>
+						
+						<c:forEach var="rowByIndex" items="${resultSet2.rowsByIndex}" >
+							<c:set var='selectedOption' value="${rowByIndex[gameCount+2]}"/>
+						</c:forEach>
+						<!-------------------------------------------------------------->
+						
+						<c:choose>
+							<c:when test="${row.num % 2 == 1}">
+								<tr>
+									<td>${gameCount}</td>
+									<td> <img src="q_images/${row.num}.jpg" width="200" height="200"> </td>
+									<td>
+										<span style="
+											<c:if test="${isAfterGame && selectedOption==row.num}">
+												background: linear-gradient(to top, yellow 50%, transparent 50%);
+												font-size: 18px;
+											</c:if>
+										">${row.opt}</span>
+									</td>
+									<td>
+										${per}%
+										<br>
+										(${row.yes}/${row.total})
+									</td>
+							</c:when>
 							
-							stmt = conn.createStatement();
-							ResultSet rs = stmt.executeQuery("select num, opt, total, yes from question order by num asc");
-							
-							stmt = conn.createStatement();
-							ResultSet rs2 = stmt.executeQuery("select * from member where id='" + session.getAttribute("id") + "'");
-							rs2.next();
-							
-							int gNum = 0;
-							
-							while (rs.next()) {
-								float yes = rs.getInt("yes");
-								float total = rs.getInt("total");
-								String per = String.format("%.0f", (yes/total)*100);
-								
-								String field = "g";
-					%>	
-								<c:set var='option' value='<%=rs.getInt("num")%>'/>
-								
-								<c:choose>
-									<c:when test="${option % 2 == 1}">
-										<% gNum += 1; field += gNum; %>
-										<c:set var='selectedOption' value="<%=rs2.getInt(field)%>"/>
-										
-										<tr>
-											<td> <%=rs.getInt("num") / 2 + 1%> </td>
-											<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
-											<td>
-												<span style="
-													<c:if test="${isAfterGame && selectedOption==option}">
-														background: linear-gradient(to top, yellow 50%, transparent 50%);
-														font-size: 18px;
-													</c:if>
-													">
-												<%=rs.getString("opt")%></span>
-											</td>
-											<td>
-												<c:set var="total" value="<%=total%>" />
-												<c:choose>
-													<c:when test="${total eq 0}">
-												        <c:out value="0%" />
-												    </c:when>
-													<c:otherwise>
-														<c:out value="<%=per%>" />%
-												    </c:otherwise>
-											    </c:choose>
-												<br>
-												(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
-											</td>
-									</c:when>
-									<c:otherwise>
-											<% field += gNum; %>
-											<c:set var='selectedOption' value="<%=rs2.getInt(field)%>"/>
-											
-											<td> <img src=q_images/<%=rs.getInt("num")%>.jpg width="200" height="200"> </td>
-											<td>
-												<span style="
-													<c:if test="${isAfterGame && selectedOption==option}">
-														background: linear-gradient(to top, yellow 50%, transparent 50%);
-														font-size: 18px;
-													</c:if>
-													">
-												<%=rs.getString("opt")%></span>
-											</td>
-											<td>
-												<c:set var="total" value="<%=total%>" />
-												<c:choose>
-													<c:when test="${total eq 0}">
-												        <c:out value="0%" />
-												    </c:when>
-													<c:otherwise>
-														<c:out value="<%=per%>" />%
-												    </c:otherwise>
-											    </c:choose>
-												<br>
-												(<%=rs.getInt("yes")%>/<%=rs.getInt("total")%>)
-											</td>
-										</tr>
-									</c:otherwise>
-										
-								</c:choose>
-					<%
-								/* } */
-							}
-						} catch(Exception e) {
-							out.println(e);
-						}
-					%>
+							<c:otherwise>
+									<c:set var="gameCount" value="${gameCount + 1}" />
+									
+									<td> <img src="q_images/${row.num}.jpg" width="200" height="200"> </td>
+									<td>
+										<span style="
+											<c:if test="${isAfterGame && selectedOption==row.num}">
+												background: linear-gradient(to top, yellow 50%, transparent 50%);
+												font-size: 18px;
+											</c:if>
+										">${row.opt}</span>
+									</td>
+									<td>
+										${per}%
+										<br>
+										(${row.yes}/${row.total})
+									</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
 				</table>
-			
-				<!-- index.jsp에 접속하면 로그인한 아이디의 DB에 있는 gamecount값이 초기화됨 -->
-				<%
-					String id = (String) session.getAttribute("id");
-				%>
-				
-				<sql:setDataSource var="dataSource"
-					url="jdbc:mysql://localhost:3306/balancedb"
-					driver="com.mysql.jdbc.Driver" user="root" password="1234" />
-			
-				<sql:update dataSource="${dataSource}" var="resultSet">
-					UPDATE member SET gamecount=? WHERE id=?;
-					<sql:param value="0" />
-					<sql:param value="<%=id%>" />
-				</sql:update>
 			</div>
 		</div>
 	</div>
 </body>
-
 </html>
