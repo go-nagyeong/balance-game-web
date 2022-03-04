@@ -73,7 +73,7 @@
 		
 		if (document.newMember.idCheckBox.value !== "uncheckable") {
 			window.name = "IDCheckForm";
-			window.open("./idOverlap.jsp?myid=" + document.newMember.myid.value, "width=300, height=160, resizable =no, scrollbars=no");
+			window.open("idOverlap.jsp?myid=" + document.newMember.myid.value, "width=300, height=160, resizable =no, scrollbars=no");
 		}
 	}
 </script>
