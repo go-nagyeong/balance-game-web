@@ -39,7 +39,10 @@
 				<span class="login100-form-title m-b-35">밸런스 게임</span>
 				
 				<div class="text-center w-full m-b-20">
-					<a href="game.jsp" class="txt1 m-r-35">게임 시작</a>
+					<c:set var="id" value='<%=session.getAttribute("id")%>'/>
+					<c:if test="${not empty id}">
+						<a href="game.jsp" class="txt1 m-r-35">게임 시작</a>
+					</c:if>
 					<a href="index.jsp" class="txt1">메인 화면</a>
 				</div>
 			
