@@ -17,3 +17,10 @@ Apache Tomcat v9.0
 Eclipse 4.16 (2020-06)  
 MySQL 8.0.22  
 JSP, HTML, CSS, Java Script  
+&nbsp;
+
+## Screenshot
+<img width="1440" alt="스크린샷 2022-03-16 오후 9 23 41" src="https://user-images.githubusercontent.com/84227532/158589807-f723b49d-c478-46ab-a17b-78d5c231af58.png">  
+<img width="1440" alt="스크린샷 2022-03-16 오후 9 23 16" src="https://user-images.githubusercontent.com/84227532/158590402-e86fac8c-0f88-4f5c-839c-a81e0e023731.png">  
+<img width="1440" alt="스크린샷 2022-03-16 오후 9 24 54" src="https://user-images.githubusercontent.com/84227532/158590451-1c6d8708-ff97-4eed-b835-a7bcd8ef9598.png">  
+<img width="1440" alt="스크린샷 2022-03-16 오후 9 25 11" src="https://user-images.githubusercontent.com/84227532/158590433-b740d8a9-05fd-4e36-bd71-d26f52032cf6.png">
