@@ -518,20 +518,13 @@ input.input100 {
   background-color: rgba(0, 0, 0, 0.05); }
 
 
-.table-hover td img {
-  position: relative; }
 .table-hover td p {
   color: white;
   font-size: 24px;
   font-family: NanumGothic-Regular;
   font-weight: 600;
-  position: absolute;
-  top: 42%;
+  transform: translateY(-220px);
   opacity: 0; }
-.table-hover td:nth-of-type(1) p {
-  left: 20%; }
-.table-hover td:nth-of-type(2) p {
-  left: 55%; }
   
 .table-hover td:hover img{
   filter: brightness(40%); }
