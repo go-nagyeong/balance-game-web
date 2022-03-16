@@ -11,7 +11,6 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="css/util.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
@@ -72,13 +71,13 @@
 							<tr>
 								<td>
 									<button type="submit" onclick="Check1()">
-										<img src="q_images/${gamecount * 2 + 1}.jpg" width="400" height="400">
+										<img src="images/opt${gamecount * 2 + 1}.jpg" width="400" height="400">
 										<p>${opt1}</p>
 									</button>
 								</td>
 								<td>
 									<button type="submit" onclick="Check2()">
-										<img src="q_images/${gamecount * 2 + 2}.jpg" width="400" height="400">
+										<img src="images/opt${gamecount * 2 + 2}.jpg" width="400" height="400">
 										<p>${opt2}</p>
 									</button>
 								</td>

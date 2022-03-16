@@ -12,8 +12,6 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-		
 		<link rel="stylesheet" type="text/css" href="css/util.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
@@ -81,7 +79,7 @@
 								<c:when test="${row.num % 2 == 1}">
 									<tr>
 										<td>${gameCount}</td>
-										<td> <img src="q_images/${row.num}.jpg" width="200" height="200"> </td>
+										<td> <img src="images/opt${row.num}.jpg" width="200" height="200"> </td>
 										<td>
 											<span style="
 												<c:if test="${isAfterGame && selectedOption==row.num}">
@@ -100,7 +98,7 @@
 								<c:otherwise>
 										<c:set var="gameCount" value="${gameCount + 1}" />
 										
-										<td> <img src="q_images/${row.num}.jpg" width="200" height="200"> </td>
+										<td> <img src="images/opt${row.num}.jpg" width="200" height="200"> </td>
 										<td>
 											<span style="
 												<c:if test="${isAfterGame && selectedOption==row.num}">
