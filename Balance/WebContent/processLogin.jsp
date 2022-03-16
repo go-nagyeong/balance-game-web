@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 
-<% 	String myid = request.getParameter("myid");
+<%
+	String myid = request.getParameter("myid");
 	String mypw = request.getParameter("mypw");
 
 	Connection conn = null;
@@ -24,7 +25,7 @@
 			response.sendRedirect("index.jsp");
 		} else { %>
 			<script>
-				alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+				alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
 				history.back();
 			</script>
 		<% }

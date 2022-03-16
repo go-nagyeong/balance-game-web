@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 	
 <%
-	if (session != null)
-		session.invalidate();
+	if (session != null) session.invalidate();
 	response.sendRedirect("index.jsp");
 %>

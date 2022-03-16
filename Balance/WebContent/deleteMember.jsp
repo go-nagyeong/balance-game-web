@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 
-<%	String id = (String) session.getAttribute("id");
+<%
+	String id = (String) session.getAttribute("id");
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;

@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 
-<%	String myid = request.getParameter("myid");
+<%
+	String myid = request.getParameter("myid");
 	String mypw = request.getParameter("mypw");
 
 	Connection conn = null;

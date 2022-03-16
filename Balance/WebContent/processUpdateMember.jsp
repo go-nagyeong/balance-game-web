@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 
-<%	String id = (String) session.getAttribute("id");
+<%
+	String id = (String) session.getAttribute("id");
 	String pw = request.getParameter("pw");
 	
 	Connection conn = null;
@@ -30,7 +31,3 @@
 		if (conn != null) conn.close();
 	}
 %>
-
-
-
-

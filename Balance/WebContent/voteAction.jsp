@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 	
-<%	String id = (String) session.getAttribute("id");
+<%
+	String id = (String) session.getAttribute("id");
 
 	String gamecount = request.getParameter("gamecount");
 	String hidden1 = request.getParameter("hidden1");
