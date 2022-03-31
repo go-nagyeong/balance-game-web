@@ -11,12 +11,11 @@
 &nbsp;
 
 ## Environment
-Mac os Monterey 12.0.1  
+Mac OS   
 Java SE 8 (1.8.0)  
 Apache Tomcat v9.0  
 Eclipse 4.16 (2020-06)  
 MySQL 8.0.22  
-JSP, HTML, CSS, Java Script  
 &nbsp;
 
 ## Screenshot
