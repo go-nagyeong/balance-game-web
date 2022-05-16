@@ -11,11 +11,10 @@
 &nbsp;
 
 ## Environment
-Mac OS   
-Java SE 8 (1.8.0)  
-Apache Tomcat v9.0  
-Eclipse 4.16 (2020-06)  
-MySQL 8.0.22  
+java se 8 (1.8.0)  
+apache tomcat v9.0  
+eclipse 4.16 (2020-06)  
+mysql 8.0.22  
 &nbsp;
 
 ## Screenshot
