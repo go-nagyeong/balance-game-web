@@ -1,6 +1,6 @@
 # Balance Game Web
 ### 회원제의 밸런스 게임 단일 서비스 제공 사이트
-:link: &nbsp;https://www.balance.ga  
+:link: &nbsp;https://balance.ga  
 
 (21.05.26 ~ 21.05.31)  
 &nbsp;
